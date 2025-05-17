@@ -4,7 +4,7 @@ A collection of projects built using HTML, CSS, and JavaScript.
 
 ## Projects
 
-### 1. Personal Portfolio Website ([Live Demo](#) | [task004]
+### 1. Personal Portfolio Website  | [task004]
 
 **Features**:
 - Responsive design
