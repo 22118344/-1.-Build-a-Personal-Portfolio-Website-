@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Listing Page</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            background: #f8f9fa;
+            padding: 2rem;
+        }
+
+        .controls {
+            max-width: 1200px;
+            margin: 0 auto 2rem;
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        select {
+            padding: 0.8rem;
+            border: 2px solid #dee2e6;
+            border-radius: 8px;
+            min-width: 200px;
+            background: white;
+            font-size: 1rem;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .product-image {
+            height: 250px;
+            background: #f1f3f5;
+            position: relative;
+        }
+
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .product-content {
+            padding: 1.5rem;
+        }
+
+        .product-category {
+            color: #6c757d;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+        }
+
+        .product-title {
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+            color: #212529;
+        }
+
+        .product-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .product-price {
+            font-size: 1.3rem;
+            color: #2b8a3e;
+            font-weight: 600;
+        }
+
+        .product-rating {
+            background: #f59f00;
+            color: white;
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 1rem;
+            }
+            
+            .controls {
+                flex-direction: column;
+            }
+            
+            select {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="controls">
+        <select id="categoryFilter">
+            <option value="all">All Categories</option>
+            <option value="electronics">Electronics</option>
+            <option value="clothing">Clothing</option>
+            <option value="books">Books</option>
+        </select>
+        
+        <select id="sortBy">
+            <option value="price">Sort by Price</option>
+            <option value="rating">Sort by Rating</option>
+        </select>
+    </div>
+
+    <div class="product-grid" id="productContainer"></div>
+
+    <script>
+        const products = [
+            { 
+                name: "Wireless Headphones",
+                category: "electronics",
+                price: 14999.99,
+                rating: 4.5,
+                image: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80"
+            },
+            { 
+                name: "Cotton T-Shirt",
+                category: "clothing",
+                price: 599.99,
+                rating: 4.2,
+                image: "https://images.unsplash.com/photo-1581655353564-df123a1eb820?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80"
+            },
+            { 
+                name: "Programming Book",
+                category: "books",
+                price: 899.99,
+                rating: 4.8,
+                image: "https://images.unsplash.com/photo-1495446815901-a7297e633e8d?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80"
+            },
+            { 
+                name: "Smart Watch",
+                category: "electronics",
+                price: 15999.99,
+                rating: 4.3,
+                image: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80"
+            }
+        ];
+
+        const categoryFilter = document.getElementById('categoryFilter');
+        const sortBy = document.getElementById('sortBy');
+        const productContainer = document.getElementById('productContainer');
+
+        renderProducts(products);
+
+        categoryFilter.addEventListener('change', updateProducts);
+        sortBy.addEventListener('change', updateProducts);
+
+        function updateProducts() {
+            let filteredProducts = products.filter(product => {
+                return categoryFilter.value === 'all' || 
+                       product.category === categoryFilter.value;
+            });
+
+            const sortValue = sortBy.value;
+            filteredProducts.sort((a, b) => {
+                if(sortValue === 'price') return a.price - b.price;
+                if(sortValue === 'rating') return b.rating - a.rating;
+                return 0;
+            });
+
+            renderProducts(filteredProducts);
+        }
+
+        function renderProducts(productsArray) {
+            productContainer.innerHTML = productsArray.map(product => `
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="${product.image}" alt="${product.name}">
+                    </div>
+                    <div class="product-content">
+                        <div class="product-category">${product.category}</div>
+                        <h3 class="product-title">${product.name}</h3>
+                        <div class="product-footer">
+                            <div class="product-price">₹${product.price.toLocaleString('en-IN', {maximumFractionDigits:2})}</div>
+                            <div class="product-rating">
+                                ★ ${product.rating}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+    </script>
+</body>
+</html>

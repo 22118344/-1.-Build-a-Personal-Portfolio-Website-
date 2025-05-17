@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gaurav Kumar - Mathematics Educator</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            background: #f9f9f9;
+        }
+
+        nav {
+            background: #2c3e50;
+            padding: 1rem;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            transition: all 0.3s ease;
+        }
+
+        nav a:hover {
+            background-color: #34495e;
+            border-radius: 4px;
+        }
+
+        section {
+            padding: 6rem 2rem;
+            min-height: 100vh;
+            display: none;
+        }
+
+        section.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            color: #2c3e50;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 0.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .experience-card, .education-card {
+            background: white;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+        }
+
+        .skill-category {
+            background: white;
+            padding: 1rem;
+            border-radius: 8px;
+        }
+
+        .project-card {
+            background: white;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            border-radius: 8px;
+        }
+
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        form {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 0.8rem;
+            margin-bottom: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        button {
+            background: #3498db;
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            section {
+                padding: 8rem 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <section id="about" class="active">
+        <div class="container">
+            <h1>Gaurav Kumar</h1>
+            <div class="about-content">
+                <h2>Mathematics Educator</h2>
+                <p>Passionate teacher with 2+ years of experience in delivering engaging mathematics instruction. 
+                Committed to fostering critical thinking and making complex concepts accessible through innovative 
+                teaching methods.</p>
+                
+                <div class="education-card">
+                    <h3>Education</h3>
+                    <p>Motihari College of Engineering - B.Tech (CS)</p>
+                    <p>Ram Lakhan Singh Yadav College - Intermediate (81.6%)</p>
+                    <p>R.S.C.D.S Vidya Mandir - Matriculation (79%)</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="experience">
+        <div class="container">
+            <h1>Professional Experience</h1>
+            <div class="experience-card">
+                <h3>Mathematics Teacher</h3>
+                <p>Aug 2023 - May 2024</p>
+                <ul>
+                    <li>Developed interactive lesson plans for algebra, calculus, and geometry</li>
+                    <li>Implemented real-world application exercises improving student engagement</li>
+                    <li>Personalized tutoring resulting in 25% average grade improvement</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills">
+        <div class="container">
+            <h1>Skills & Expertise</h1>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3>Mathematics</h3>
+                    <p>Algebra, Calculus, Trigonometry, Geometry, Statistics</p>
+                </div>
+                <div class="skill-category">
+                    <h3>Technical</h3>
+                    <p>Python, C/C++, Data Analytics, MySQL</p>
+                </div>
+                <div class="skill-category">
+                    <h3>Communication</h3>
+                    <p>Bilingual (Hindi/English), Student Mentorship, Curriculum Development</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="container">
+            <h1>Contact Me</h1>
+            <div class="contact-info">
+                <div>
+                    <h3>Availability</h3>
+                    <p>Open for teaching opportunities and academic collaborations</p>
+                </div>
+                <div>
+                    <h3>Languages</h3>
+                    <p>Hindi (Native)<br>English (Professional Proficiency)</p>
+                </div>
+            </div>
+            <form id="contactForm">
+                <input type="text" placeholder="Your Name" required>
+                <input type="email" placeholder="Email Address" required>
+                <textarea rows="5" placeholder="Your Message" required></textarea>
+                <button type="submit">Send Message</button>
+            </form>
+        </div>
+    </section>
+
+    <script>
+        // Navigation handling
+        document.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const targetSection = document.querySelector(link.getAttribute('href'));
+                document.querySelector('.active').classList.remove('active');
+                targetSection.classList.add('active');
+                window.history.pushState(null, null, link.getAttribute('href'));
+            });
+        });
+
+        // Form handling
+        document.getElementById('contactForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('Thank you for your message! I will respond within 24 hours.');
+            e.target.reset();
+        });
+
+        // Initial load handling
+        window.addEventListener('load', () => {
+            const hash = window.location.hash || '#about';
+            document.querySelector(hash).classList.add('active');
+        });
+    </script>
+</body>
+</html>
